@@ -16,10 +16,10 @@ class ShippingPage extends Component {
     addressIsValid: false,
     phone: '',
     phoneTouched: false,
-    phoneIsValid: false,
+    phoneIsValid: true,
     email: '',
     emailTouched: false,
-    emailIsValid: false,
+    emailIsValid: true,
     shipping: '',
   };
 
@@ -87,9 +87,10 @@ class ShippingPage extends Component {
                 })}
                 id="shipping-name"
                 placeholder="Name"
+                required
               />
+              <div className="invalid-feedback">Please choose a name.</div>
             </div>
-            <div className="invalid-feedback">Please choose a name.</div>
           </div>
 
           <div className="form-group row">
@@ -111,6 +112,9 @@ class ShippingPage extends Component {
                 id="shipping-address"
                 placeholder="Address"
               />
+              <div className="invalid-feedback">
+                Please provide a valid address.
+              </div>
             </div>
           </div>
 
@@ -130,6 +134,9 @@ class ShippingPage extends Component {
                 id="shipping-phone"
                 placeholder="Phone"
               />
+              <div className="invalid-feedback">
+                Please provide a valid phone number.
+              </div>
             </div>
           </div>
 
@@ -149,6 +156,7 @@ class ShippingPage extends Component {
                 id="shipping-email"
                 placeholder="Email"
               />
+              <div className="invalid-feedback">Please provide a valid email.</div>
             </div>
           </div>
           <div className="form-group row">
@@ -167,7 +175,8 @@ class ShippingPage extends Component {
                 onChange={e => this.handleChange(e)}
               >
                 <option defaultValue>Choose...</option>
-                <option value="Free shipping">ninjPost Free shipping</option>
+                <option value="Free shipping">Free shipping</option>
+                <option value="ninjPost">ninjPost</option>
                 <option value="D7L">D7L 15.99$</option>
                 <option value="7post">7post 7.99$</option>
               </select>
@@ -177,7 +186,7 @@ class ShippingPage extends Component {
             <div className="col-sm-10">
               <button
                 type="submit"
-                className="btn btn-primary"
+                className="btn btn-info"
                 disabled={
                   !(
                     emailIsValid
