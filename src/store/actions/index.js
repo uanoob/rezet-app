@@ -1,2 +1,6 @@
 export { getAllProducts } from './products.action';
-export { deleteProduct, decreaseProduct } from './product.action';
+export {
+  deleteProduct,
+  decreaseProduct,
+  increaseProduct,
+} from './product.action';

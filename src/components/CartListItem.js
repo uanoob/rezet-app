@@ -7,10 +7,11 @@ const CartListItem = ({
   },
   handleDeleteProduct,
   handleDecreaseProduct,
+  handleIncreaseProduct,
 }) => (
   <li
     className="list-group-item d-flex justify-content-between align-items-center"
-    style={{ maxWidth: '660px' }}
+    style={{ maxWidth: '680px' }}
   >
     <div className="list-inline-item">
       <div className="card mb-3" style={{ maxWidth: '340px' }}>
@@ -35,7 +36,12 @@ const CartListItem = ({
         aria-label="Toolbar with button groups"
       >
         <div className="btn-group mr-1" role="group" aria-label="Third group">
-          <button type="button" className="btn btn-outline-info">
+          <button
+            type="button"
+            className="btn btn-outline-info"
+            onClick={() => handleIncreaseProduct(id, quantity + 1)}
+            disabled={quantity >= 100}
+          >
             +
           </button>
         </div>
@@ -49,6 +55,7 @@ const CartListItem = ({
             type="button"
             className="btn btn-outline-info"
             onClick={() => handleDecreaseProduct(id, quantity - 1)}
+            disabled={quantity <= 0}
           >
             -
           </button>
@@ -85,6 +92,7 @@ CartListItem.propTypes = {
   }).isRequired,
   handleDeleteProduct: PropTypes.func.isRequired,
   handleDecreaseProduct: PropTypes.func.isRequired,
+  handleIncreaseProduct: PropTypes.func.isRequired,
 };
 
 export default CartListItem;

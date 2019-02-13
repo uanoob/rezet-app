@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import CartListItem from './CartListItem';
 
-const CartList = ({ products, handleDeleteProduct, handleDecreaseProduct }) => {
+const CartList = ({
+  products,
+  handleDeleteProduct,
+  handleDecreaseProduct,
+  handleIncreaseProduct,
+}) => {
   let total = 0;
   return (
     <div className="container mt-2">
@@ -16,13 +21,14 @@ const CartList = ({ products, handleDeleteProduct, handleDecreaseProduct }) => {
               product={product}
               handleDeleteProduct={handleDeleteProduct}
               handleDecreaseProduct={handleDecreaseProduct}
+              handleIncreaseProduct={handleIncreaseProduct}
             />
           );
         })}
       </ul>
       <div
         className="list-group-item d-flex justify-content-between align-items-center"
-        style={{ maxWidth: '660px' }}
+        style={{ maxWidth: '680px' }}
       >
         {`Total: ${total} $`}
 
@@ -56,6 +62,7 @@ CartList.propTypes = {
   ),
   handleDeleteProduct: PropTypes.func.isRequired,
   handleDecreaseProduct: PropTypes.func.isRequired,
+  handleIncreaseProduct: PropTypes.func.isRequired,
 };
 
 export default CartList;

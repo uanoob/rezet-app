@@ -7,3 +7,6 @@ export const DELETE_PRODUCT_FAIL = '[product] delete product fail';
 export const DECREASE_PRODUCT_START = '[product] decrease product start';
 export const DECREASE_PRODUCT_SUCCESS = '[product] decrease product success';
 export const DECREASE_PRODUCT_FAIL = '[product] decrease product fail';
+export const INCREASE_PRODUCT_START = '[product] increase product start';
+export const INCREASE_PRODUCT_SUCCESS = '[product] increase product success';
+export const INCREASE_PRODUCT_FAIL = '[product] increase product fail';

@@ -5,6 +5,9 @@ import {
   DECREASE_PRODUCT_START,
   DECREASE_PRODUCT_SUCCESS,
   DECREASE_PRODUCT_FAIL,
+  INCREASE_PRODUCT_START,
+  INCREASE_PRODUCT_SUCCESS,
+  INCREASE_PRODUCT_FAIL,
 } from './types';
 
 import BASE_URL from '../../config';
@@ -81,5 +84,45 @@ export const decreaseProduct = (productId, nextQuantity) => (dispatch) => {
     })
     .catch((error) => {
       dispatch(decreaseProductFail(error));
+    });
+};
+
+const increaseProductStart = () => ({
+  type: INCREASE_PRODUCT_START,
+});
+
+const increaseProductSuccess = message => ({
+  type: INCREASE_PRODUCT_SUCCESS,
+  payload: message,
+});
+
+const increaseProductFail = error => ({
+  type: INCREASE_PRODUCT_FAIL,
+  payload: error,
+});
+
+export const increaseProduct = (productId, nextQuantity) => (dispatch) => {
+  dispatch(increaseProductStart());
+  const sendData = {
+    quantity: nextQuantity,
+  };
+  fetch(`${BASE_URL}/products/${productId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(sendData),
+  })
+    .then(response => response.json())
+    .then((data) => {
+      if (data) {
+        dispatch(increaseProductSuccess(data));
+        dispatch(getAllProducts());
+      } else {
+        dispatch(increaseProductFail(data));
+      }
+    })
+    .catch((error) => {
+      dispatch(increaseProductFail(error));
     });
 };
