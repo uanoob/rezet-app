@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import CartListItem from './CartListItem';
 
-const CartList = ({ products }) => (
+const CartList = ({ products, handleDeleteProduct }) => (
   <div className="container mt-2">
     <ul className="list-group">
       {products.map(product => (
-        <CartListItem key={product.id} product={product} />
+        <CartListItem
+          key={product.id}
+          product={product}
+          handleDeleteProduct={handleDeleteProduct}
+        />
       ))}
     </ul>
     <div
@@ -14,9 +19,9 @@ const CartList = ({ products }) => (
       style={{ maxWidth: '640px' }}
     >
       Total: 1235$
-      <button type="button" className="btn btn-outline-success">
+      <NavLink to="/shipping" type="button" className="btn btn-outline-success">
         Buy
-      </button>
+      </NavLink>
     </div>
   </div>
 );
@@ -34,8 +39,10 @@ CartList.propTypes = {
       subtitle: PropTypes.string.isRequired,
       price: PropTypes.string.isRequired,
       image: PropTypes.string.isRequired,
+      quantity: PropTypes.number.isRequired,
     }),
   ),
+  handleDeleteProduct: PropTypes.func.isRequired,
 };
 
 export default CartList;
