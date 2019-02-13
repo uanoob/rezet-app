@@ -3,28 +3,40 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import CartListItem from './CartListItem';
 
-const CartList = ({ products, handleDeleteProduct }) => (
-  <div className="container mt-2">
-    <ul className="list-group">
-      {products.map(product => (
-        <CartListItem
-          key={product.id}
-          product={product}
-          handleDeleteProduct={handleDeleteProduct}
-        />
-      ))}
-    </ul>
-    <div
-      className="list-group-item d-flex justify-content-between align-items-center"
-      style={{ maxWidth: '640px' }}
-    >
-      Total: 1235$
-      <NavLink to="/shipping" type="button" className="btn btn-outline-success">
-        Buy
-      </NavLink>
+const CartList = ({ products, handleDeleteProduct, handleDecreaseProduct }) => {
+  let total = 0;
+  return (
+    <div className="container mt-2">
+      <ul className="list-group">
+        {products.map((product) => {
+          total += product.price * product.quantity;
+          return (
+            <CartListItem
+              key={product.id}
+              product={product}
+              handleDeleteProduct={handleDeleteProduct}
+              handleDecreaseProduct={handleDecreaseProduct}
+            />
+          );
+        })}
+      </ul>
+      <div
+        className="list-group-item d-flex justify-content-between align-items-center"
+        style={{ maxWidth: '660px' }}
+      >
+        {`Total: ${total} $`}
+
+        <NavLink
+          to="/shipping"
+          type="button"
+          className="btn btn-outline-success"
+        >
+          Buy
+        </NavLink>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 CartList.defaultProps = {
   products: [],
@@ -43,6 +55,7 @@ CartList.propTypes = {
     }),
   ),
   handleDeleteProduct: PropTypes.func.isRequired,
+  handleDecreaseProduct: PropTypes.func.isRequired,
 };
 
 export default CartList;

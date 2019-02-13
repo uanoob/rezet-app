@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getAllProducts, deleteProduct } from '../store/actions';
+import {
+  getAllProducts,
+  deleteProduct,
+  decreaseProduct,
+} from '../store/actions';
 import CartList from './CartList';
 
 class CartPage extends Component {
@@ -15,12 +19,18 @@ class CartPage extends Component {
     onDeleteProduct(productId);
   };
 
+  handleDecreaseProduct = (productId, nextQuantity) => {
+    const { onDecreaseProduct } = this.props;
+    onDecreaseProduct(productId, nextQuantity);
+  };
+
   render() {
     const { products } = this.props;
     return (
       <CartList
         products={products}
         handleDeleteProduct={this.handleDeleteProduct}
+        handleDecreaseProduct={this.handleDecreaseProduct}
       />
     );
   }
@@ -33,6 +43,7 @@ CartPage.defaultProps = {
 CartPage.propTypes = {
   onGetAllProducts: PropTypes.func.isRequired,
   onDeleteProduct: PropTypes.func.isRequired,
+  onDecreaseProduct: PropTypes.func.isRequired,
   products: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -53,6 +64,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   onGetAllProducts: getAllProducts,
   onDeleteProduct: deleteProduct,
+  onDecreaseProduct: decreaseProduct,
 };
 
 export default connect(

@@ -6,10 +6,11 @@ const CartListItem = ({
     id, image, title, subtitle, quantity, price,
   },
   handleDeleteProduct,
+  handleDecreaseProduct,
 }) => (
   <li
     className="list-group-item d-flex justify-content-between align-items-center"
-    style={{ maxWidth: '640px' }}
+    style={{ maxWidth: '660px' }}
   >
     <div className="list-inline-item">
       <div className="card mb-3" style={{ maxWidth: '340px' }}>
@@ -44,13 +45,17 @@ const CartListItem = ({
           </button>
         </div>
         <div className="btn-group" role="group" aria-label="Third group">
-          <button type="button" className="btn btn-outline-info">
+          <button
+            type="button"
+            className="btn btn-outline-info"
+            onClick={() => handleDecreaseProduct(id, quantity - 1)}
+          >
             -
           </button>
         </div>
         <div className="btn-group mr-1" role="group" aria-label="Third group">
           <button type="button" className="btn btn-light" disabled>
-            {price}
+            {(price * quantity).toFixed(2)}
 $
           </button>
         </div>
@@ -79,6 +84,7 @@ CartListItem.propTypes = {
     quantity: PropTypes.number.isRequired,
   }).isRequired,
   handleDeleteProduct: PropTypes.func.isRequired,
+  handleDecreaseProduct: PropTypes.func.isRequired,
 };
 
 export default CartListItem;

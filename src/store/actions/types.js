@@ -4,3 +4,6 @@ export const GET_ALL_PRODUCTS_FAIL = '[products] get all products fail';
 export const DELETE_PRODUCT_START = '[product] delete product start';
 export const DELETE_PRODUCT_SUCCESS = '[product] delete product success';
 export const DELETE_PRODUCT_FAIL = '[product] delete product fail';
+export const DECREASE_PRODUCT_START = '[product] decrease product start';
+export const DECREASE_PRODUCT_SUCCESS = '[product] decrease product success';
+export const DECREASE_PRODUCT_FAIL = '[product] decrease product fail';
