@@ -2,8 +2,6 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
 
 const htmlPlugin = new HtmlWebPackPlugin({
   template: path.resolve(__dirname, 'public', 'index.html'),
@@ -15,8 +13,6 @@ const cssPlugin = new MiniCssExtractPlugin({
 });
 
 const clearPlugin = new CleanWebpackPlugin();
-
-const analyzerPlugin = new BundleAnalyzerPlugin();
 
 module.exports = {
   entry: './src/index.js',
@@ -57,5 +53,5 @@ module.exports = {
       },
     ],
   },
-  plugins: [htmlPlugin, cssPlugin, clearPlugin, analyzerPlugin],
+  plugins: [htmlPlugin, cssPlugin, clearPlugin],
 };
