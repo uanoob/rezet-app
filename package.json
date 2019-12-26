@@ -2,10 +2,10 @@
   "name": "rezet-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://uanoob.github.io/rezet-app",
   "dependencies": {
     "@babel/runtime": "^7.7.7",
     "classnames": "^2.2.6",
+    "dotenv-webpack": "^1.7.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",

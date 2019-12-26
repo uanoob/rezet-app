@@ -1,4 +1,6 @@
+const webpack = require('webpack');
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -14,12 +16,20 @@ const cssPlugin = new MiniCssExtractPlugin({
 
 const clearPlugin = new CleanWebpackPlugin();
 
+const dotEnvPlugin = new Dotenv();
+
+const PUBLIC_URL = process.env.PUBLIC_URL || '/';
+
+const urlPlugin = new webpack.DefinePlugin({
+  'process.env.PUBLIC_URL': JSON.stringify(PUBLIC_URL),
+});
+
 module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'static/js/bundle.js',
     chunkFilename: 'static/js/[name].chunk.js',
-    publicPath: '/',
+    publicPath: PUBLIC_URL,
     path: path.resolve(__dirname, 'build'),
   },
   devServer: {
@@ -53,5 +63,5 @@ module.exports = {
       },
     ],
   },
-  plugins: [htmlPlugin, cssPlugin, clearPlugin],
+  plugins: [htmlPlugin, cssPlugin, clearPlugin, urlPlugin, dotEnvPlugin],
 };
