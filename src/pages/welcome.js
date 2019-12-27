@@ -1,9 +1,9 @@
 import React from 'react';
 
-const WelcomePage = () => (
+const Welcome = () => (
   <div className="card text-center">
     <div className="card-body">Welcome</div>
   </div>
 );
 
-export default WelcomePage;
+export default Welcome;

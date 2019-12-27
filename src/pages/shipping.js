@@ -6,7 +6,7 @@ import {
   checkValidityEmail,
 } from '../utils/validator.utils';
 
-class ShippingPage extends Component {
+class Shipping extends Component {
   state = {
     name: '',
     nameTouched: false,
@@ -206,6 +206,6 @@ class ShippingPage extends Component {
   }
 }
 
-ShippingPage.propTypes = {};
+Shipping.propTypes = {};
 
-export default ShippingPage;
+export default Shipping;

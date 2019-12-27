@@ -1,0 +1,12 @@
+export const GET_ALL_PRODUCTS_START = 'get all products start';
+export const GET_ALL_PRODUCTS_SUCCESS = 'get all products success';
+export const GET_ALL_PRODUCTS_FAIL = 'get all products fail';
+export const DELETE_PRODUCT_START = 'delete product start';
+export const DELETE_PRODUCT_SUCCESS = 'delete product success';
+export const DELETE_PRODUCT_FAIL = 'delete product fail';
+export const ADD_PRODUCT_START = 'add product start';
+export const ADD_PRODUCT_SUCCESS = 'add product success';
+export const ADD_PRODUCT_FAIL = 'add product fail';
+export const UPDATE_PRODUCT_START = 'update product start';
+export const UPDATE_PRODUCT_SUCCESS = 'update product success';
+export const UPDATE_PRODUCT_FAIL = 'update product fail';
